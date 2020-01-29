@@ -5,7 +5,7 @@ import './App.css';
 const App = () => {
   const APP_ID = "2bc15c26"
   const APP_KEY = "76f3c83062d2dd81480e0c336e5b996a"
-  const [recipes, setRecipes] = useState([])
+  const [recipe, setRecipes] = useState([])
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState('chicken')
 
@@ -16,6 +16,7 @@ const App = () => {
   const getReceips = async () => {
     const response = await fetch(
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      //"http://localhost:8081/get_stats"
     )
     const data = await response.json()
     setRecipes(data.hits)
@@ -34,20 +35,25 @@ const App = () => {
     setSearch('')
   }
 
+  const hStyle = { color: 'red' };
+
   return (
     <div className="App">
       <form onSubmit={getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
+        <label className="label">Jetbrain Console</label>
+        <input className="search-bar" placeholder="Search..." type="text" value={search}
+          onChange={updateSearch} />
         <button className="search-button" type="submit">
-          Search
+          Submit
         </button>
       </form>
+
       <div className="recipes">
-        {recipes.map(recipe => (
+        {recipe.map(recipe => (
           <Recipe
             key={recipe.recipe.label}
             title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
+            //calories={recipe.recipe.calories}
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
           />

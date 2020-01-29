@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  background-image:linear-gradient(45deg,#ff9a9e 0%, #fad0c4 99%,#fad0c4 100%) ;
+  background-image:linear-gradient(45deg,#e2e2e2 0%, #e2e2e2 99%,#e2e2e2 100%) ;
 }
 
 .search-form{
@@ -12,15 +12,44 @@
 
 .search-bar{
   width: 50%;
+  overflow: hidden;
+  background-color: #e9e9e9;
+  color: black;
+  font-size: 13px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   border: none;
+  border-color: rgb(201, 76, 76);
   padding: 10px;
+}
+.search-bar:hover {
+  background-color: #ddd;
+  color: black;
+
 }
 
 .search-button{
-  background: lightcoral;
-  border: none;
-  padding: 10px 20px;
+  background: #2196F3;
+  border: none; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: inline-block;
+  border-radius: 4px;
+  font-style: inherit;
+  transition: 0.3s;
+  padding: 10px 15px;
   color: white;
+}
+.search-button:hover {
+  background-color: #ddd;
+  color: #2196F3;
+  border: 2px solid #2196F3;
+}
+
+label {
+  color: #2196F3;
+  font-size: 2.1em;
+  font-family: 'Comfortaa', bold;
+  width: 30%;
 }
 
 .recipes{
@@ -34,6 +63,7 @@
   box-shadow: 0px 5px 20px rgb(71, 71, 71);
   margin: 20px;
   display: flex;
+  font-family: 'Comfortaa', bold;
   flex-direction: column;
   justify-content: space-around;
   background: white;
@@ -44,5 +74,16 @@
 .image{
   border-radius: 50%;
   width: 100px;
+  padding: 10px;
   height: 100px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
 }
