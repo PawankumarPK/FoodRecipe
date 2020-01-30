@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import Recipe from "./Recipe"
 import './App.css';
+
 
 const App = () => {
   const APP_ID = "2bc15c26"
@@ -13,6 +14,24 @@ const App = () => {
     getReceips()
   }, [query])
 
+  class App extends Component {
+
+    constructor() {
+      super()
+      this.state = {
+        showMe: true
+      }
+    }
+
+    operation() {
+      this.setState({
+        //showMe: false
+        showMe: !this.state.showMe
+      })
+    }
+  }
+
+
   const getReceips = async () => {
     const response = await fetch(
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
@@ -20,6 +39,7 @@ const App = () => {
     )
     const data = await response.json()
     setRecipes(data.hits)
+    this.state.showMe = false
     console.log(data.hits)
 
   }
@@ -35,12 +55,13 @@ const App = () => {
     setSearch('')
   }
 
-  const hStyle = { color: 'red' };
 
   return (
     <div className="App">
       <form onSubmit={getSearch} className="search-form">
+
         <label className="label">Jetbrain Console</label>
+
         <input className="search-bar" placeholder="Search..." type="text" value={search}
           onChange={updateSearch} />
         <button className="search-button" type="submit">
@@ -61,6 +82,8 @@ const App = () => {
       </div>
     </div>
   )
+
+
 }
 
 export default App;
