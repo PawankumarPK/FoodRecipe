@@ -2,7 +2,6 @@ import React, { useEffect, useState, Component } from 'react'
 import Recipe from "./Recipe"
 import './App.css';
 
-
 const App = () => {
   const APP_ID = "2bc15c26"
   const APP_KEY = "76f3c83062d2dd81480e0c336e5b996a"
@@ -13,24 +12,6 @@ const App = () => {
   useEffect(() => {
     getReceips()
   }, [query])
-
-  class App extends Component {
-
-    constructor() {
-      super()
-      this.state = {
-        showMe: true
-      }
-    }
-
-    operation() {
-      this.setState({
-        //showMe: false
-        showMe: !this.state.showMe
-      })
-    }
-  }
-
 
   const getReceips = async () => {
     const response = await fetch(
